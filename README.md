@@ -20,7 +20,7 @@ A simple and elegant 3D image carousel using HTML, CSS, and JavaScript. This pro
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/3d-image-carousel.git
+   [# Image-Carousel](https://github.com/ShwetDutta/Image-Carousel.git)
    ```
 2. Navigate to the project folder:
    ```sh
@@ -69,7 +69,7 @@ A simple and elegant 3D image carousel using HTML, CSS, and JavaScript. This pro
 ## Contributing
 
 Feel free to fork the repository and submit a pull request for improvements!
-[# Image-Carousel](https://github.com/ShwetDutta/Image-Carousel.git)
+
 
 
 ---
