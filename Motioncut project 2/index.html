@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Image Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
+            overflow: hidden;
+        }
+        .carousel-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            perspective: 1000px;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(15px);
+            z-index: -1;
+        }
+        .carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            width: 300px;
+            height: 450px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .description {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .sub-description {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+        .buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .buttons button {
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .buttons button:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="background" id="background"></div>
+        <div class="carousel" id="carousel">
+            <div class="slide"><img src="Rolls-Royce La Rose, Elegant, Luxurious,Powerful, Prestigious, Exclusive, Craftsmanship, Grand_.jpeg" alt="Car 1"><div class="description">Rolls Royce</div></div>
+            <div class="slide"><img src="pexels-a2pro-5981987.jpg" alt="Car 2"><div class="description">Aston Martin</div></div>
+            <div class="slide"><img src="☆ kayla.jpeg" alt="Car 3"><div class="description">Porsche</div></div>
+        </div>
+        <div class="buttons">
+            <button onclick="prevSlide()">&#10094;</button>
+            <button onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        let index = 1;
+        const slides = document.querySelectorAll(".slide");
+        const background = document.getElementById("background");
+        function updateCarousel() {
+            slides.forEach((slide, i) => {
+                const offset = i - index;
+                slide.style.transform = `translateX(${offset * 250}px) scale(${i === index ? 1.2 : 0.8}) rotateY(${offset * 20}deg)`;
+                slide.style.opacity = i === index ? "1" : "0.5";
+            });
+            background.style.backgroundImage = `url(${slides[index].querySelector("img").src})`;
+        }
+        function prevSlide() {
+            index = (index > 0) ? index - 1 : slides.length - 1;
+            updateCarousel();
+        }
+        function nextSlide() {
+            index = (index < slides.length - 1) ? index + 1 : 0;
+            updateCarousel();
+        }
+        window.onload = updateCarousel;
+    </script>
+</body>
+</html>
+
+
