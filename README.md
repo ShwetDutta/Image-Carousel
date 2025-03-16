@@ -49,9 +49,6 @@ A simple and elegant 3D image carousel using HTML, CSS, and JavaScript. This pro
 - The active image appears in the center with a scale-up effect, while others fade into the background.
 - The background dynamically changes based on the active image.
 
-## Screenshots
-
-![3D Image Carousel Screenshot](screenshot.png)
 
 ## Customization
 
